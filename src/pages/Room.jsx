@@ -1,9 +1,9 @@
 import { useState } from "react";
 import useMessages from "../hooks/useMessages";
-import Messages from "./Messages";
+import Messages from "../components/Messages";
 import { db } from "../firebase/config";
 
-const Chat = ({ roomId }) => {
+const Room = ({ roomId }) => {
   const [newMessage, setNewMessage] = useState("");
   const messages = useMessages(roomId);
 
@@ -14,12 +14,11 @@ const Chat = ({ roomId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Add a new message to the "messages" collection in Firestore with the roomId
-      await db.collection("messages").add({
+      // Add a new message to the current room's "messages" subcollection in Firestore
+      await db.collection("servers").doc(roomId).collection("messages").add({
         text: newMessage,
         username: "TODO: Implement username",
         timestamp: new Date(),
-        roomId,
       });
       // Clear the input field
       setNewMessage("");
@@ -30,7 +29,7 @@ const Chat = ({ roomId }) => {
 
   return (
     <div>
-      <h1>Chat</h1>
+      <h1>Room {roomId}</h1>
       <Messages messages={messages} />
       <form onSubmit={handleSubmit}>
         <input type="text" value={newMessage} onChange={handleNewMessage} />
@@ -40,4 +39,24 @@ const Chat = ({ roomId }) => {
   );
 };
 
-export default Chat;
+const Rooms = () => {
+  const [currentRoomId, setCurrentRoomId] = useState("");
+
+  const handleRoomChange = (roomId) => {
+    setCurrentRoomId(roomId);
+  };
+
+  return (
+    <div>
+      <h1>Rooms</h1>
+      <ul>
+        <li onClick={() => handleRoomChange("room1")}>Room 1</li>
+        <li onClick={() => handleRoomChange("room2")}>Room 2</li>
+        {/* Add more rooms here */}
+      </ul>
+      {currentRoomId && <Room roomId={currentRoomId} />}
+    </div>
+  );
+};
+
+export default Rooms;
