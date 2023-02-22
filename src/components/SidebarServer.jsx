@@ -1,9 +1,10 @@
 // Server Sidebar for accessing and managing Channels
 import React, { useState } from 'react'
-import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowDown } from 'react-icons/io'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { HeaderServer } from './index.js'
 import "./SidebarServer.css";
+/* , IoIosArrowForward */
 
 function SidebarServer() {
     const [rotateTextArrow, setRotateTextArrow] = useState(false);

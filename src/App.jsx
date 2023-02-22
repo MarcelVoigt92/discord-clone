@@ -4,7 +4,6 @@ import {
   SidebarServer,
   SidebarUsers,
   HeaderChat,
-  HeaderServer,
   Footer,
   Chat,
 } from "./components/index.js";
