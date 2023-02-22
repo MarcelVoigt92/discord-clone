@@ -1,9 +1,9 @@
 import useMessages from "../hooks/useMessages";
 
-// Define a component called Messages
-const Messages = () => {
-  // Call the useMessages hook to get an array of messages
-  const messages = useMessages();
+// Define a component called Messages that takes a roomId prop
+const Messages = ({ roomId }) => {
+  // Call the useMessages hook with the roomId to get an array of messages for the current room
+  const messages = useMessages(roomId);
 
   // Render a div that maps over the messages array and renders the text, username, and timestamp of each message
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useCollection from "../hooks/useCollection";
 import useMessages from "../hooks/useMessages";
 import Messages from "../components/Messages";
 import { db } from "../firebase/config";
@@ -41,6 +42,7 @@ const Room = ({ roomId }) => {
 
 const Rooms = () => {
   const [currentRoomId, setCurrentRoomId] = useState("");
+  const servers = useCollection("servers");
 
   const handleRoomChange = (roomId) => {
     setCurrentRoomId(roomId);
@@ -50,9 +52,12 @@ const Rooms = () => {
     <div>
       <h1>Rooms</h1>
       <ul>
-        <li onClick={() => handleRoomChange("room1")}>Room 1</li>
-        <li onClick={() => handleRoomChange("room2")}>Room 2</li>
-        {/* Add more rooms here */}
+        {servers &&
+          servers.map((server) => (
+            <li key={server.id} onClick={() => handleRoomChange(server.id)}>
+              {server.data().name}
+            </li>
+          ))}
       </ul>
       {currentRoomId && <Room roomId={currentRoomId} />}
     </div>
