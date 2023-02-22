@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, SidebarServer, SidebarUsers, HeaderChat, HeaderServer, Footer } from "./components/index";
+import { Navbar, SidebarServer, SidebarUsers, HeaderChat, HeaderServer, Footer } from "./components/index.js";
 
 import "./App.css";
 
