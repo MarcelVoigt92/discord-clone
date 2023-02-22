@@ -20,7 +20,6 @@ function App() {
       <SidebarUsers />
       <Chat />
       <HeaderChat />
-      <HeaderServer />
       <Footer />
     </div>
   );

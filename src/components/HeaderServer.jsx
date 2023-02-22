@@ -2,10 +2,11 @@
 import React from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { RxCross2 } from 'react-icons/rx'
+import "./SidebarServer.css"
 
 function HeaderServer() {
     return (
-        <div>
+        <div className='sidebar__top'>
             <span>Server Name</span>
             <IoIosArrowDown /> <RxCross2 /> {/*or <IoIosArrowUp /> - Arrow Up/Down for server options */}
             <div>       {/* Server Options Menu */}
