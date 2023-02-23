@@ -36,14 +36,16 @@ function App() {
         );
       } else {
         // the user is logged out
-        dispatch(logout());
-        logOut(user);
+        dispatch(logout(logOut(user)));
       }
     });
   }, [dispatch]);
 
   return (
-    <div className="App" style={{ display: `${user ? 'grid' : 'flex'}`, justifyContent: "center" }}>
+    <div
+      className="App"
+      style={{ display: `${user ? "grid" : "flex"}`, justifyContent: "center" }}
+    >
       {user ? (
         <>
           <Navbar />
