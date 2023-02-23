@@ -2,14 +2,15 @@ import db from "../firebase/config";
 
 export const useLog = () => {
   const logInPush = async (user) => {
+    console.log("user", user);
     try {
-      await db
-        .collection("users")
-        .doc(user.uid)
-        .set({
-          ...user,
-          online: true,
-        });
+      await db.collection("users").doc(user.uid).set({
+        user,
+      });
+
+      await db.collection("users").doc(user.uid).update({
+        online: true,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -17,13 +18,9 @@ export const useLog = () => {
 
   const logOut = async (user) => {
     try {
-      await db
-        .collection("users")
-        .doc(user.uid)
-        .update({
-          ...user,
-          online: false,
-        });
+      await db.collection("users").doc(user.uid).update({
+        online: false,
+      });
     } catch (error) {
       console.log(error);
     }
