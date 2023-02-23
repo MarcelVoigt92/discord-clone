@@ -1,7 +1,43 @@
-.App {
-  text-align: center;
+:root{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 70px 1fr 70% 1fr;
+  grid-template-rows: 5% 90% 5%;
+  height: 99vh;
+  width: 99vw;
+}
+/* grid temp start */
+.chat{
+  grid-column: 3/ 4;
+  grid-row: 2/ 3;
+}
+
+.nav{
+  grid-column:1/2 ;
+  grid-row: 1/4;
+}
+
+.sidebarServer{
+  grid-column: 2/3 ;
+  grid-row: 1/4 ;
+}
+
+.headerChat{
+  grid-column: 3/5 ;
+  grid-row: 1/2 ;
+}
+
+.sidebarUsers{
+  grid-column: 4/5 ;
+  grid-row: 1/4 ;
+}
+/* grid temp end */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,3 +73,4 @@
     transform: translateY(0px);
   }
 }
+

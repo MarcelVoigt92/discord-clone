@@ -3,7 +3,7 @@ import React from 'react'
 
 function SidebarUsers() {
     return (
-        <div>
+        <div className="sidebarUsers">
             <span>Online - {/* OnlineCount */}</span>
             <div>
                 <ul>

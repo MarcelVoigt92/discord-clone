@@ -5,7 +5,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 
 function Navbar() {
     return (
-        <div>
+        <div className="nav">
             <FaDiscord /> {/* private message tab */}
             <div>
                 pretend to .map private message notifications in here

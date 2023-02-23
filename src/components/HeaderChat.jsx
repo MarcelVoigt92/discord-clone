@@ -8,7 +8,7 @@ import { MdPeopleAlt } from 'react-icons/md'
 
 function HeaderChat() {
     return (
-        <div>
+        <div className='headerChat'>
             <BiHash /> {/* Hashtag Icon infront of channel name */}
             <span>Channel Name</span>
             <FiMessageSquare /> {/* Threads Icon */}
