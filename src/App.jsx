@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "./redux/reducers/userSlice";
-import Login from "./Pages/Login/Login";
 import { auth } from "./firebase/config";
 import { login, logout } from "./redux/reducers/userSlice";
+import Login from "./pages/Login/Login";
 import {
   Navbar,
   SidebarServer,
