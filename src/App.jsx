@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "./redux/reducers/userSlice";
 import { auth } from "./firebase/config";
 import { login, logout } from "./redux/reducers/userSlice";
-import Login from "./pages/Login/Login";
+import Login from './Pages/Login/Login';
 import {
   Navbar,
   SidebarServer,
   SidebarUsers,
   HeaderChat,
-  Footer,
   Chat,
 } from "./components/index.js";
 import "./App.css";
@@ -46,7 +45,6 @@ function App() {
           <SidebarUsers />
           <Chat />
           <HeaderChat />
-          <Footer />
         </>
       ) : (
         <Login />

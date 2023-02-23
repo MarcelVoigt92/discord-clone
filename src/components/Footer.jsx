@@ -6,7 +6,7 @@ import { FaCog } from 'react-icons/fa'
 
 function Footer() {
     return (
-        <div>
+        <div className='footer'>
             <img src="" alt="" /> {/* UserAvatar */}
             <div>On/Off</div> {/* Online/Offline Toggle */}
             <span>Username</span>

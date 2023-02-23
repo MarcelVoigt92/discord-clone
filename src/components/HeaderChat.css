@@ -1,0 +1,15 @@
+.headerChat{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.headerChannelName{
+    grid-column: 3/4;
+    align-self: center;
+}
+
+.headerIcons{
+    grid-column: 5/6;
+    align-self: center;
+    justify-self: end;
+}
