@@ -7,13 +7,13 @@
   grid-column: 3/4;
   place-items: center;
 }
-button {
+.signInBtn {
   background-color: #738adb;
   width: 250px;
   height: 30px;
   border-radius: 8px;
   color: white;
 }
-button:hover {
+.signInBtn:hover {
   background-color: black;
 }

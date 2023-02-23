@@ -34,7 +34,7 @@ const Login = () => {
             value={password}
           />
         </label>
-        <button>Log In...</button>
+        <button className="signInBtn" >Log In...</button>
       </form>
     </div>
   );

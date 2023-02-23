@@ -3,19 +3,21 @@ import React from "react";
 
 import { FaDiscord, FaCompass } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/reducers/userSlice";
+/* import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/reducers/userSlice"; */
 import { auth } from "../../firebase/config";
+import './Navbar.css'
+
+
 function Navbar() {
-  const user = useSelector(selectUser);
   return (
-    <div>
-      <div>
-        <img src={user.photo} alt="" />
-        <p>{user.displayName}</p>
-        <button onClick={() => auth.signOut()}>sign Out</button>
+    <div className="nav">
+      <div className="discordIcon">
+        <FaDiscord /> {/* private message tab */}
       </div>
-      <FaDiscord /> {/* private message tab */}
+      <div>
+        <button className="logoutBtn" onClick={() => auth.signOut()}>sign Out</button>
+      </div>
       <div>pretend to .map private message notifications in here</div>
       <div>
         <ul>
