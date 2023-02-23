@@ -41,7 +41,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="App" style={{ display: `${user ? 'grid' : 'flex'}`, justifyContent: "center" }}>
       {user ? (
         <>
           <Navbar />

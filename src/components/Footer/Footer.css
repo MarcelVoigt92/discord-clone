@@ -1,0 +1,35 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nameStatusContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarContainer img{
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.onlineStatus{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 2;
+}

@@ -6,7 +6,6 @@
 
 .App {
   text-align: center;
-  display: grid;
   grid-template-columns: 70px 15% 70% 1fr;
   grid-template-rows: 5% 90% 5%;
   height: 100vh;

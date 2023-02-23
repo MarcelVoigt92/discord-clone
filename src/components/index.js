@@ -1,11 +1,11 @@
-import Navbar from "./Navbar";
-import SidebarServer from "./SidebarServer";
-import SidebarUsers from "./SidebarUsers";
-import HeaderChat from "./HeaderChat";
-import HeaderServer from "./HeaderServer";
-import Footer from "./Footer";
-import Chat from "./Chat";
-import Messages from "./Messages";
+import Navbar from "./Navbar/Navbar";
+import SidebarServer from "./SidebarServer/SidebarServer";
+import SidebarUsers from "./SidebarUsers/SidebarUsers";
+import HeaderChat from "./HeaderChat/HeaderChat";
+import HeaderServer from "./HeaderServer/HeaderServer";
+import Footer from "./Footer/Footer";
+import Chat from "./Chat & Messages/Chat";
+import Messages from "./Chat & Messages/Messages";
 
 export {
   Navbar,

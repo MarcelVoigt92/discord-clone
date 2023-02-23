@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { HeaderServer } from './index.js'
+import { HeaderServer } from '../index.js'
 import "./SidebarServer.css";
-import { Footer } from './index.js';
+import { Footer } from '../index.js';
 /* , IoIosArrowForward */
 
 function SidebarServer() {

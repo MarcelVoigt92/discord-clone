@@ -1,4 +1,4 @@
-import useMessages from "../hooks/useMessages";
+import useMessages from "../../hooks/useMessages";
 
 // Define a component called Messages that takes a roomId prop
 const Messages = ({ roomId }) => {
