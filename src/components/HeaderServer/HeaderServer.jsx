@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { RxCross2 } from 'react-icons/rx'
-import "./SidebarServer.css";
-import "./animate.css";
+import "../SidebarServer/SidebarServer.css";
+import "../animate.css";
 
 function HeaderServer() {
     const [menuOpener, setMenuOpener] = useState(false);

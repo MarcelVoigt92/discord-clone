@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Messages from "./Messages";
-import db from "../firebase/config";
+import db from "../../firebase/config";
 
 // Define a component called Chat that takes a roomId prop
 const Chat = ({ roomId }) => {

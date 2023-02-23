@@ -4,8 +4,8 @@ import React from "react";
 import { FaDiscord, FaCompass } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { selectUser } from "../redux/reducers/userSlice";
-import { auth } from "../firebase/config";
+import { selectUser } from "../../redux/reducers/userSlice";
+import { auth } from "../../firebase/config";
 function Navbar() {
   const user = useSelector(selectUser);
   return (

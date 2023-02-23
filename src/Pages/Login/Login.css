@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100vh;
   grid-column: 3/4;
+  place-items: center;
 }
 button {
   background-color: #738adb;
