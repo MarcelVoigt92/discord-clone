@@ -1,40 +1,26 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "./redux/reducers/userSlice";
-
-
+import { Navbar } from "./components/index";
+import Home from "./pages/Home/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 
 import SignUp from "./pages/SignUp/SignUp";
 
-
-import {
-  Navbar,
-  SidebarServer,
-  SidebarUsers,
-  HeaderChat,
-  Chat,
-} from "./components/index.js";
 import "./App.css";
 
 function App() {
   const user = useSelector(selectUser);
 
   return (
-    <div
-      className="App"
-      style={{ display: `${user ? "grid" : "flex"}`, justifyContent: "center" }}
-    >
-      {user ? (
-        <>
+    <div className="App">
+      {user && (
+        <div className="wrapper">
           <Navbar />
-          <SidebarServer />
-          <SidebarUsers />
-          <Chat />
-          <HeaderChat />
-        </>
-      ) : (
-        <Login />
+          <Home />
+        </div>
       )}
+      {!user && <Login />}
     </div>
   );
 }

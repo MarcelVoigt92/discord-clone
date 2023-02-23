@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { db } from "../firebase/config";
+import db from "../firebase/config";
 
 export const useCollection = (_collection, _query) => {
   const [document, setDocument] = useState(null);
@@ -18,6 +18,7 @@ export const useCollection = (_collection, _query) => {
         snapShot.docs.forEach((doc) => {
           result.push({ ...doc.data(), id: doc.id });
         });
+        console.log(result);
         setDocument(result);
         setError(null);
       },
