@@ -18,25 +18,24 @@ function App() {
   const { logInPush, logOut } = useLog();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
+  console.log(user);
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // the user is logged in
-
+        logInPush(user);
         dispatch(
-          login(
-            logInPush({
-              uid: authUser.uid,
-              photo: authUser.photoURL,
-              email: authUser.email,
-              displayName: authUser.displayName,
-            })
-          )
+          login({
+            uid: authUser.uid,
+            photo: authUser.photoURL,
+            email: authUser.email,
+            displayName: authUser.displayName,
+          })
         );
       } else {
         // the user is logged out
-        dispatch(logout(logOut(user)));
+        dispatch(logout());
+        logOut(user);
       }
     });
   }, [dispatch]);
