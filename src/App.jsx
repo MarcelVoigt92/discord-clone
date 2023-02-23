@@ -23,15 +23,17 @@ function App() {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // the user is logged in
+
         dispatch(
-          login({
-            uid: authUser.uid,
-            photo: authUser.photoURL,
-            email: authUser.email,
-            displayName: authUser.displayName,
-          })
+          login(
+            logInPush({
+              uid: authUser.uid,
+              photo: authUser.photoURL,
+              email: authUser.email,
+              displayName: authUser.displayName,
+            })
+          )
         );
-        logInPush(user);
       } else {
         // the user is logged out
         dispatch(logout());
