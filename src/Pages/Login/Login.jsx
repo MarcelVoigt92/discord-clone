@@ -15,7 +15,7 @@ const Login = () => {
           <FaDiscord /> Discord
         </p>
       </div>
-      <button onClick={signIn}>Sign IN</button>
+      <button className="signInBtn" onClick={signIn}>Sign IN</button>
     </div>
   );
 };
