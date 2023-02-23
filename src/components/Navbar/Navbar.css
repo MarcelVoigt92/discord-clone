@@ -1,4 +1,4 @@
-.discordIcon{
+/* .discordIcon{
     background-color: grey;
     width: 48px;
     height: 48px;
@@ -24,4 +24,24 @@
 .logoutBtn:hover{
     background-color: black;
     color: white;
+} */
+.nav {
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.controlIcons {
+  margin-inline: auto;
+  margin-block: 1rem;
+}
+.controlIcons .icons {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
 }
