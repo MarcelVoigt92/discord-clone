@@ -30,7 +30,7 @@ const Chat = ({ roomId }) => {
     <div className="chat">
       <h1>Chat</h1>
       <Messages roomId={roomId} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="chatInput">
         <input type="text" value={newMessage} onChange={handleNewMessage} />
         <button type="submit">Send</button>
       </form>
