@@ -39,13 +39,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1>TIME TO SUFFER</h1> */}
-      <Navbar />
-      <SidebarServer />
-      <SidebarUsers />
-      <Chat />
-      <HeaderChat />
-      <Footer />
+      {user ? (
+        <>
+          <Navbar />
+          <SidebarServer />
+          <SidebarUsers />
+          <Chat />
+          <HeaderChat />
+          <Footer />
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
