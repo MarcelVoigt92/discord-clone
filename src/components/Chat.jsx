@@ -28,7 +28,7 @@ const Chat = () => {
   };
 
   return (
-    <div>
+    <div className="chat">
       <h1>Chat</h1>
       <Messages messages={messages} />
       <form onSubmit={handleSubmit}>
