@@ -2,7 +2,6 @@ import db from "../firebase/config";
 
 export const useLog = () => {
   const logInPush = async (user) => {
-    console.log("user", user);
     try {
       await db.collection("users").doc(user.uid).set({
         user,
