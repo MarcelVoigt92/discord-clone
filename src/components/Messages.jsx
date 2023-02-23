@@ -7,7 +7,7 @@ const Messages = ({ roomId }) => {
 
   // Render a div that maps over the messages array and renders the text, username, and timestamp of each message
   return (
-    <div>
+    <div className="messages">
       {messages.map((message) => (
         <div key={message.id}>
           <p>{message.text}</p>
