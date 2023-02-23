@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db } from "../firebase/config";
+import db from "../firebase/config";
 
 // Define a custom hook called useMessages that returns an array of messages
 const useMessages = () => {
