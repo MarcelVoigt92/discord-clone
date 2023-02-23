@@ -18,7 +18,7 @@ function SidebarServer() {
 
     return (
         <>
-            <div className='sidebar'>
+            <div className='sidebar sidebarServer'>
                 <HeaderServer />
                 <div className='sidebar__channels'>
                     <div className='sidebar__channelsHeader'>
