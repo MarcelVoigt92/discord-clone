@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useMessages from "../hooks/useMessages";
 import Messages from "./Messages";
-import { db } from "../firebase/config";
+import db from "../firebase/config";
 
 const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
