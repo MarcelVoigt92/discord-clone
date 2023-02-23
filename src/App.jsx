@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "./redux/reducers/userSlice";
 import { auth } from "./firebase/config";
 import { login, logout } from "./redux/reducers/userSlice";
-import Login from './Pages/Login/Login';
+import Login from "./pages/Login/Login";
+import { useLog } from "./hooks/useLog";
 import {
   Navbar,
   SidebarServer,
@@ -14,6 +15,7 @@ import {
 import "./App.css";
 
 function App() {
+  const { logInPush, logOut } = useLog();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -29,9 +31,11 @@ function App() {
             displayName: authUser.displayName,
           })
         );
+        logInPush(user);
       } else {
         // the user is logged out
         dispatch(logout());
+        logOut(user);
       }
     });
   }, [dispatch]);
