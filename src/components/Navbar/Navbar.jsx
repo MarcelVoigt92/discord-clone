@@ -3,19 +3,17 @@ import React, { useEffect, useState } from "react";
 
 import { FaDiscord, FaCompass } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
-/* import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/reducers/userSlice"; */
+
 import { useCallback } from "react";
 import { auth } from "../../firebase/config";
 import db from "../../firebase/config";
-import { useCollection } from "../../hooks/useCollection";
+
 import { Link } from "react-router-dom";
+
 import "./Navbar.css";
 
 function Navbar() {
   const [document, setDocument] = useState(null);
-  const [serverName, setServerName] = useState("");
-  const { documents } = useCollection("servers");
 
   const getServer = useCallback(() => {
     let result = [];
@@ -35,15 +33,14 @@ function Navbar() {
     setDocument(result);
   }, []);
   console.log("document", document);
-  const addServer = () => {
-    const severName = prompt("please Enter the server Name");
-    db.collection("servers").add({ ...documents, name: severName });
-  };
 
   useEffect(() => {
     getServer();
   }, [getServer]);
 
+  const serverId = (id) => {
+    localStorage.setItem("item", id);
+  };
   return (
     <div className="nav">
       <div>
@@ -59,12 +56,17 @@ function Navbar() {
       </div>
       {/* Create/Join new Server button */}
       <div className="controlIcons">
-        <div>
+        <div className="serverWrapper">
           {document?.map((server) => (
             <div key={server.id}>
-              <button>
-                <Link to="/project">{server.name}</Link>
-              </button>
+              <Link to="/server">
+                <button
+                  className="serverName"
+                  onClick={() => serverId(server.id)}
+                >
+                  {server.name}
+                </button>
+              </Link>
             </div>
           ))}
         </div>

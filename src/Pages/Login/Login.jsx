@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLogIn } from "../../hooks/useLogin";
 import { login } from "../../redux/reducers/userSlice";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,7 @@ const Login = () => {
         </label>
         <button className="signInBtn">Log In...</button>
       </form>
+      {/* <Link to="/signup">You do not have an account create on with us</Link> */}
     </div>
   );
 };

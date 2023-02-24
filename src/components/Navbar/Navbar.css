@@ -45,3 +45,17 @@
   align-items: center;
   border: 2px solid black;
 }
+.serverWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.serverName {
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+a {
+  text-decoration: none;
+}
