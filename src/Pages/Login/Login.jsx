@@ -11,7 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const handleLogin = (e) => {
     e.preventDefault();
-    userlogin(email, password);
+    dispatch(login(userlogin(email, password)));
   };
   return (
     <div className="login">
@@ -34,7 +34,7 @@ const Login = () => {
             value={password}
           />
         </label>
-        <button className="signInBtn" >Log In...</button>
+        <button className="signInBtn">Log In...</button>
       </form>
     </div>
   );

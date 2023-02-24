@@ -1,5 +1,4 @@
 import {
-  Navbar,
   SidebarServer,
   SidebarUsers,
   HeaderChat,
