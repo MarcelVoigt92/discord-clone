@@ -9,7 +9,7 @@ import { useCallback } from "react";
 import { auth } from "../../firebase/config";
 import db from "../../firebase/config";
 import { useCollection } from "../../hooks/useCollection";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -34,7 +34,7 @@ function Navbar() {
     );
     setDocument(result);
   }, []);
-
+  console.log("document", document);
   const addServer = () => {
     const severName = prompt("please Enter the server Name");
     db.collection("servers").add({ ...documents, name: severName });
@@ -47,7 +47,10 @@ function Navbar() {
   return (
     <div className="nav">
       <div>
-        <FaDiscord /> {/* private message tab */}
+        <Link to="/">
+          <FaDiscord />
+        </Link>
+        {/* private message tab */}
       </div>
       <div>
         <button className="logoutBtn" onClick={() => auth.signOut()}>
@@ -58,13 +61,19 @@ function Navbar() {
       <div className="controlIcons">
         <div>
           {document?.map((server) => (
-            <button>{server.name}</button>
+            <div key={server.id}>
+              <button>
+                <Link to="/project">{server.name}</Link>
+              </button>
+            </div>
           ))}
         </div>
         <div className="icons">
-          <button onClick={addServer}>
-            <AiOutlinePlus />
-          </button>
+          <Link to="/create">
+            <button>
+              <AiOutlinePlus />
+            </button>
+          </Link>
         </div>
         {/* explore public servers button */}
         <div className="icons">
