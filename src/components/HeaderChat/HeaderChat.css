@@ -1,15 +1,17 @@
-.headerChat{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+.headerChat {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #36393f;
+  border-bottom: 3px solid #26282c;
 }
 
-.headerChannelName{
-    grid-column: 3/4;
-    align-self: center;
+.headerChannelName {
+  grid-column: 3/4;
+  align-self: center;
 }
 
-.headerIcons{
-    grid-column: 5/6;
-    align-self: center;
-    justify-self: end;
+.headerIcons {
+  grid-column: 5/6;
+  align-self: center;
+  justify-self: end;
 }

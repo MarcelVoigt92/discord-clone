@@ -3,6 +3,7 @@ import {
   SidebarUsers,
   HeaderChat,
   Chat,
+  Input,
 } from "../../components/index";
 
 import "./Home.css";
