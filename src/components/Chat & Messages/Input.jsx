@@ -24,7 +24,6 @@ const Input = ({ roomId }) => {
   };
   return (
     <div className="chatInput">
-      {" "}
       <form onSubmit={handleSubmit} className="chat-form">
         <input
           type="text"

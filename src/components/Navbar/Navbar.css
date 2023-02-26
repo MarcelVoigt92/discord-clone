@@ -1,37 +1,51 @@
-/* .discordIcon{
-    background-color: grey;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.nav{
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    word-wrap: break-word;
-}
-
-.logoutBtn{
-    background-color: red;
-    border: none;
-    padding: 5px;
-    border-radius: 7px;
-}
-
-.logoutBtn:hover{
-    background-color: black;
-    color: white;
-} */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 .nav {
-  width: 110px;
+  width: 90px;
   display: flex;
   flex-direction: column;
-
+  background-color: #1e1f22;
   align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding: 0 20px;
 }
+
+.nav > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+}
+
+.nav > div:first-child a {
+  color: #fff;
+  text-decoration: none;
+  margin-top: 20px;
+  margin-left: -10px;
+}
+
+.nav > div:first-child a:hover {
+  opacity: 0.8;
+}
+
+.logoutBtn {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  opacity: 0.8;
+}
+
+.FaDiscord {
+  font-size: 2rem;
+}
+
 .controlIcons {
   margin-inline: auto;
   margin-block: 1rem;
@@ -43,18 +57,84 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  padding: 7px;
+  margin-top: 7px;
+  font-size: 2rem;
 }
 .serverWrapper {
   display: flex;
   flex-direction: column;
+
   gap: 0.5rem;
   margin-bottom: 0.7rem;
 }
-.serverName {
-  width: 60px;
-  aspect-ratio: 1;
+
+.server-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #40444b;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.serverName {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.serverName:hover {
+  opacity: 0.8;
+}
+
+.icon-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #40444b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.icons:hover {
+  opacity: 0.8;
+}
+
+.icons button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 30px;
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.icons button:focus {
+  outline: none;
 }
 a {
   text-decoration: none;

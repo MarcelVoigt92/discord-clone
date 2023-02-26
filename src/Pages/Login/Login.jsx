@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useLogIn } from "../../hooks/useLogin";
 import { login } from "../../redux/reducers/userSlice";
 import "./Login.css";
+import Discord from "../../assets/discord.png";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -16,7 +17,8 @@ const Login = () => {
   };
   return (
     <div className="login">
-      <form onSubmit={(e) => handleLogin(e)}>
+      <img src={Discord} alt="" />
+      <form className="login-form" onSubmit={(e) => handleLogin(e)}>
         <label>
           <span>Email:</span>
           <input

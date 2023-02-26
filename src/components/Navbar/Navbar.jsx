@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 import { FaDiscord, FaCompass } from "react-icons/fa";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineLogout } from "react-icons/ai";
 
 import { useCallback } from "react";
 import { auth } from "../../firebase/config";
@@ -43,28 +43,23 @@ function Navbar() {
   };
   return (
     <div className="nav">
-      <div>
+      {/* Create/Join new Server button */}
+      <div className="icon-div">
         <Link to="/">
           <FaDiscord />
         </Link>
         {/* private message tab */}
       </div>
-      <div>
-        <button className="logoutBtn" onClick={() => auth.signOut()}>
-          sign Out
-        </button>
-      </div>
-      {/* Create/Join new Server button */}
       <div className="controlIcons">
         <div className="serverWrapper">
           {document?.map((server) => (
-            <div key={server.id}>
+            <div className="server-icons" key={server.id}>
               <Link to="/server">
                 <button
-                  className="serverName"
+                  className="serverName "
                   onClick={() => serverId(server.id)}
                 >
-                  {server.name}
+                  {server.name.charAt(0).toUpperCase()}
                 </button>
               </Link>
             </div>
@@ -80,6 +75,11 @@ function Navbar() {
         {/* explore public servers button */}
         <div className="icons">
           <FaCompass />
+        </div>
+        <div className="icons">
+          <button className="logoutBtn" onClick={() => auth.signOut()}>
+            <AiOutlineLogout />
+          </button>
         </div>
       </div>
     </div>

@@ -87,16 +87,20 @@
   display: grid;
   grid-template-columns: 300px 1fr 250px;
   grid-template-rows: 75px 1fr;
+  background-color: #1e1f22;
 }
 
 .home .headerChat {
   grid-row: 1;
   grid-column: 1/3;
+  padding: 10px;
 }
 
 .home .sidebarUsers {
   grid-column: 3/4;
   grid-row: 2;
+  background-color: #1e1f22;
+  padding-left: 10px;
 }
 
 .home .sidebarServer {
