@@ -7,7 +7,8 @@ import Footer from "./Footer/Footer";
 import Chat from "./Chat & Messages/Chat";
 import Messages from "./Chat & Messages/Messages";
 import Input from "./Chat & Messages/Input";
-
+import Friends from "./HomeComponents/Friends";
+import WelcomPage from "./HomeComponents/WelcomPage";
 export {
   Navbar,
   SidebarServer,
@@ -18,4 +19,6 @@ export {
   Chat,
   Messages,
   Input,
+  Friends,
+  WelcomPage,
 };
