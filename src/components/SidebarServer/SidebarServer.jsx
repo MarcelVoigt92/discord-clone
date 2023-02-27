@@ -7,7 +7,7 @@ import "./SidebarServer.css";
 import { Footer } from "../index.js";
 /* , IoIosArrowForward */
 
-function SidebarServer({ serverName }) {
+function SidebarServer({ serverName, rooms = [] }) {
   const [rotateTextArrow, setRotateTextArrow] = useState(false);
   const handleTextRotate = () => setRotateTextArrow(!rotateTextArrow);
   const rotateText = rotateTextArrow ? "rotate(-90deg)" : "rotate(0)";
@@ -34,7 +34,9 @@ function SidebarServer({ serverName }) {
           </div>
           <div>
             <ul>
-              <li>.map all Text Channels</li>
+              {rooms.map((room) => (
+                <li key={room.name}>{room.name}</li>
+              ))}
             </ul>
           </div>
           <div className="sidebar__channelsHeader">

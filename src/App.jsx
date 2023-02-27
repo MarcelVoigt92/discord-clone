@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/index";
-import { Home, Server, Login, SignUp, CreateServer } from "./pages/index";
+import { Home, Server, Login, SignUp, CreateServer } from "./Pages/index";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 import "./App.css";
