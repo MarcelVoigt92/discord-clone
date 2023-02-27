@@ -84,3 +84,17 @@
   background-color: #00000063;
   height: 50px;
 }
+.message-username img {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+.message-username {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.messsageBody {
+  border-bottom: 1px solid #1e1f22;
+}

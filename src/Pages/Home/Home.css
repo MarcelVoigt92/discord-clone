@@ -13,25 +13,18 @@
   padding: 10px;
 }
 
-.home .chat-messages {
-  height: 100vh;
-}
-
 .home .sidebarUsers {
   grid-column: 3;
   grid-row: 2;
   background-color: #1e1f22;
   padding-left: 10px;
-  color: white;
-  font-size: 20px;
-  overflow: hidden;
 }
 
 .home .sidebarServer {
   grid-column: 1;
   grid-row: 1;
 }
-.home .chat {
+.home .welcome {
   grid-column: 2/3;
   grid-row: 2/4;
 }
