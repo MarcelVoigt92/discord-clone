@@ -13,6 +13,10 @@
   padding: 10px;
 }
 
+.home .chat-messages {
+  height: 100vh;
+}
+
 .home .sidebarUsers {
   grid-column: 3;
   grid-row: 2;
@@ -20,6 +24,7 @@
   padding-left: 10px;
   color: white;
   font-size: 20px;
+  overflow: hidden;
 }
 
 .home .sidebarServer {
