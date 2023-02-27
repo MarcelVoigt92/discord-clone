@@ -1,49 +1,63 @@
 import { useState } from "react";
-import { useSignUp } from "../../hooks/useSignUp";
-import { useDispatch } from "react-redux";
-import { login } from "../../redux/reducers/userSlice";
+import { useSignup } from "../../hooks/useSignUp";
 import discord from "../../assets/discord.png";
-import "./SignUp.css";
-const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [passWord, setPassWord] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [photo, setPhoto] = useState(null);
-  const [photoError, setPhotoError] = useState(null);
-  const { signup } = useSignUp();
-  const dispatch = useDispatch();
 
+//Style
+import "./SignUp.css";
+export default function SignUp() {
+  /**User Email to sign up */
+  const [email, setEmail] = useState("");
+  /** User Password */
+  const [password, setPassword] = useState("");
+  /** User Nick Name */
+  const [displayName, setDisplayName] = useState("");
+  /** User Profile Pic */
+  const [thumbnail, setThumbnail] = useState(null);
+  /** If User Profile Pic has an error*/
+  const [thumbnailError, setThumbnailError] = useState(null);
+
+  const { signup, isPending, error } = useSignup();
+
+  //A Function to submit the data to firebase
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(signup(email, passWord, displayName, photo)));
+    signup(email, password, displayName, thumbnail);
   };
 
-  const handlePhoto = (e) => {
-    setPhoto(null);
+  /** A function to check the type the size of the user Pic */
+  const handleFileChange = (e) => {
+    /** A clean up to the input type file so it will only take the last file we upload */
+    setThumbnail(null);
+
     let selected = e.target.files[0];
 
+    console.log(selected);
     if (!selected) {
-      setPhotoError("please chosse a Profile Picture");
+      setThumbnailError("Please select an image file");
       return;
     }
-
+    /** To check if the file uploaded is an Image or not */
     if (!selected.type.includes("image")) {
-      setPhotoError("please chosse a Valid image type");
-    }
-    if (selected.size > 900000) {
-      setPhotoError("Image file must be less than 100kb");
+      setThumbnailError("The File must be an image");
       return;
     }
-    setPhotoError(null);
-    setPhoto(selected);
+    /** To check to file size */
+    if (selected.size > 900000) {
+      setThumbnailError("Image file must be less than 100kb");
+      return;
+    }
+    setThumbnailError(null);
+    setThumbnail(selected);
+    console.log("thumbnail updated");
   };
+
   return (
     <div className="signUp">
-      <img className="discord-img" src={discord} alt="" />
-      <form className="sign-up-form" onSubmit={(e) => handleSubmit(e)}>
-        <h2>Sign up to be with us</h2>
+      <img src={discord} alt="" className="discord-img" />
+      <form className="sign-up-form " onSubmit={handleSubmit}>
+        <h2>Sign Up/ Register</h2>
         <label>
-          <span>Email:</span>
+          <span className="sign-up-span ">Email:</span>
           <input
             className="sign-up-input"
             type="email"
@@ -53,17 +67,17 @@ const SignUp = () => {
           />
         </label>
         <label>
-          <span className="sign-up-span">Password:</span>
+          <span className="sign-up-span ">Password:</span>
           <input
             className="sign-up-input"
             type="password"
             required
-            onChange={(e) => setPassWord(e.target.value)}
-            value={passWord}
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
         </label>
         <label>
-          <span className="sign-up-span">Username:</span>
+          <span className="sign-up-span ">Username:</span>
           <input
             className="sign-up-input"
             type="text"
@@ -73,13 +87,27 @@ const SignUp = () => {
           />
         </label>
         <label>
-          <span>Profile Picture:</span>
-          <input type="file" required onChange={handlePhoto} />
+          <span className="sign-up-span ">Profile Picture:</span>
+          <input type="file" required onChange={handleFileChange} />
+          {/** A box will disply the Thumbnail error */}
+          {thumbnailError && <div className="error">{thumbnailError}</div>}
         </label>
-        <button className="sign-up-btn">Sign Up!</button>
+        {/** if the Thumbnail does not fulfill our requirement, the button to submit will be disabled */}
+        {thumbnailError && (
+          <button className="btn" disabled>
+            Sign Up
+          </button>
+        )}
+        {isPending && (
+          <button className="btn" disabled>
+            Loading...
+          </button>
+        )}
+        {!thumbnailError && !isPending ? (
+          <button className="btn sign-up-btn">Sign Up</button>
+        ) : null}
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   );
-};
-
-export default SignUp;
+}

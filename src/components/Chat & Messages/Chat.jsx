@@ -10,7 +10,6 @@ const Chat = ({ roomId }) => {
           <Messages roomId={roomId} />
         </div>
       </div>
-      <Input />
     </div>
   );
 };

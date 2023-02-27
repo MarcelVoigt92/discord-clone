@@ -1,20 +1,42 @@
-import { auth } from "../firebase/config";
-import db from "../firebase/config";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/reducers/userSlice";
-export const useLogIn = () => {
-  const dispatch = useDispatch();
-  const userlogin = async (email, passWord) => {
-    const currentUser = auth.currentUser;
+import { useState, useEffect } from "react";
+import { auth, db } from "../firebase/config";
+import { useAuthContext } from "./useAuthContext";
 
+export const useLogin = () => {
+  //An art from clean up if the user changed form Login to any other thing without sending the data
+  const [isCancelled, setIsCancelled] = useState(false);
+  const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const { dispatch } = useAuthContext();
+
+  const login = async (email, password) => {
     try {
-      const response = await auth.signInWithEmailAndPassword(email, passWord);
-      await db.collection("users").doc(response.user.uid).update({
+      // login
+      //https://firebase.google.com/docs/auth/web/password-auth for the signInWithEmailAndPassword
+      const res = await auth.signInWithEmailAndPassword(email, password);
+
+      await db.collection("users").doc(res.user.uid).update({
         online: true,
       });
-      dispatch(login(currentUser));
-    } catch (err) {}
-  };
+      // Dispatch type and payload for the Auth Context
+      dispatch({ type: "LOGIN", payload: res.user });
 
-  return { userlogin };
+      //If canceld the pending will be False and the Error will be null
+      if (!isCancelled) {
+        setIsPending(false);
+        setError(null);
+      }
+
+      // Catch if something went wrong or the User canceld the Login before the fetch is Finished
+    } catch (err) {
+      if (isCancelled) {
+        setIsPending(false);
+        setError(err.message);
+      }
+    }
+  };
+  useEffect(() => {
+    return () => setIsCancelled(true);
+  }, []);
+  return { login, isPending, error };
 };

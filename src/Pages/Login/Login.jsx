@@ -1,19 +1,18 @@
-import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useLogIn } from "../../hooks/useLogin";
-import { login } from "../../redux/reducers/userSlice";
-import "./Login.css";
+import { useLogin } from "../../hooks/useLogin";
 import Discord from "../../assets/discord.png";
+
+import "./Login.css";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { userlogin } = useLogIn();
-  const dispatch = useDispatch();
+  const { login, isPending, error } = useLogin();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(userlogin(email, password)));
+    login(email, password);
   };
   return (
     <div className="login">

@@ -3,13 +3,11 @@ import React, { useState } from "react";
 import { MdHeadset, MdHeadsetOff } from "react-icons/md";
 import { FaCog } from "react-icons/fa";
 import { BiMicrophone, BiMicrophoneOff, BiCog } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/reducers/userSlice";
+
 import "./Footer.css";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 function Footer() {
-  const user = useSelector(selectUser);
-
   const [micMute, setMicMute] = useState(false);
   const handleMicMute = () => setMicMute(!micMute);
   const micIcon = micMute ? <BiMicrophoneOff /> : <BiMicrophone />;
@@ -21,7 +19,7 @@ function Footer() {
   const [online, setOnline] = useState(false);
   const handleOnline = () => setOnline(!online);
   const onlineColor = online ? "red" : "green";
-
+  const { user } = useAuthContext();
   return (
     <div className="footer">
       <div className="avatarContainer">

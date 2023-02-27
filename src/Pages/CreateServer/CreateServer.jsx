@@ -1,34 +1,37 @@
 import { useState } from "react";
-import { useFirestore } from "../../hooks/useFirebase";
+import { useFireStore } from "../../hooks/useFirebase";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import discord from "../../assets/discord.png";
 import "./CreateServer.css";
 
 const CreateServer = () => {
+  const { addDocument, response } = useFireStore("servers");
   const navigate = useNavigate();
-  const { addDocument, response } = useFirestore("servers");
   const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
   const [formError, setFormError] = useState("");
-  const [roomCategory, setRoomCategory] = useState("");
 
   const roomCategories = [
     { value: "general", label: "General" },
     { value: "meme", label: "Memes" },
-    { value: "design", label: "Design" },
+    { value: "gaming", label: "Gaming" },
   ];
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setFormError(null);
-    if (!roomCategory) {
-      setRoomCategory("Please select a Starting Room");
+    if (!category) {
+      setFormError("Please select a Starting Room");
     }
     const server = {
-      name,
-      rooms: {
-        roomCategory,
-      },
+      name: name,
+      room: [
+        {
+          name: category.value,
+          messages: [],
+        },
+      ],
     };
     await addDocument(server);
     if (!response.error) {
@@ -62,7 +65,7 @@ const CreateServer = () => {
               options={roomCategories}
               onChange={(option) => {
                 console.log(option);
-                setRoomCategory(option);
+                setCategory(option);
               }}
             />
           </label>
