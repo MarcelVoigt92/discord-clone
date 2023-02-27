@@ -4,7 +4,6 @@ import {
   SidebarServer,
   SidebarUsers,
   Chat,
-  Navbar,
   Input,
 } from "../../components/index";
 import { useParams } from "react-router-dom";
