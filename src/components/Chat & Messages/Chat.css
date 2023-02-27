@@ -1,5 +1,4 @@
 .messages {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
