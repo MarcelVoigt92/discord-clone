@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignUp";
+import { Link } from "react-router-dom";
 import discord from "../../assets/discord.png";
 
 //Style
@@ -106,6 +107,9 @@ export default function SignUp() {
         {!thumbnailError && !isPending ? (
           <button className="btn sign-up-btn">Sign Up</button>
         ) : null}
+        <Link to="/login">
+          <button className="btn sign-up-btn">Log in</button>
+        </Link>
         {error && <div className="error">{error}</div>}
       </form>
     </div>

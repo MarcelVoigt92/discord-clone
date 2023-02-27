@@ -1,7 +1,16 @@
 import { useState } from "react";
-import { db } from "../../firebase/config";
-const Input = ({ roomId }) => {
+
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useDocument } from "../../hooks/useDocument";
+import { useFireStore } from "../../hooks/useFirebase";
+import { useParams } from "react-router-dom";
+
+const Input = () => {
+  const { user } = useAuthContext();
+  const { id } = useParams();
   const [newMessage, setNewMessage] = useState("");
+  const { updateDocument, response } = useFireStore("servers");
+  const { document } = useDocument("servers", id);
 
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value);
@@ -9,18 +18,17 @@ const Input = ({ roomId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      // Add a new message to the "messages" subcollection of the current room in Firestore
-      await db.collection("servers").doc(roomId).collection("messages").add({
-        text: newMessage,
-        username: "TODO: Implement username",
-        timestamp: new Date(),
-      });
-      // Clear the input field
-      setNewMessage("");
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
+    const message = {
+      messageBody: newMessage,
+      user: user.displayName,
+      time: new Date().toLocaleString(),
+      image: user.photoURL,
+    };
+
+    await updateDocument(document.id, {
+      messsages: [...document.messsages, message],
+    });
+    setNewMessage("");
   };
   return (
     <div className="chatInput">

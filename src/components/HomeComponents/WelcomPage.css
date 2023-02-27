@@ -1,0 +1,11 @@
+.welcome {
+  background-color: #36393f;
+  display: flex;
+
+  padding: 20px;
+}
+.welcome img {
+  border-radius: 7px;
+  width: 250px;
+  aspect-ratio: 1;
+}
