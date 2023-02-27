@@ -1,32 +1,31 @@
 import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import "firebase/compat/auth";
 import "firebase/compat/storage";
 
+// For Authentication we have only took the Email Authentication form Firebase.
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATA_BASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER_ID,
-  appId: process.env.REACT_APP_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_DI,
+  appId: process.env.REACT_APP_APPLICATION_ID,
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Initialize Firestore
+//init services
 const db = firebase.firestore();
 
-// Initialize Storage
-const storage = firebase.storage();
-
-// Initialize Authentication
+//init service for auth
 const auth = firebase.auth();
 
-//Provider for google Authentication
+// init storage
+const storage = firebase.storage();
 
-// Export
-export { storage, auth };
-export default db;
+//timestamp
+// to have a time stamp when the user logged in or out from the App and it's form Firebase
+const timestamp = firebase.firestore.Timestamp;
+
+export { db, storage, auth, timestamp };

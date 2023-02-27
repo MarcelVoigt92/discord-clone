@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useState } from "react";
-import db from "../firebase/config";
+import { db, timestamp } from "../firebase/config";
 
 //initial states for firestore
 /** initial states for firestore*/
@@ -46,7 +46,7 @@ const firestoreReducer = (state, action) => {
   }
 };
 /** firestore control hook*/
-export const useFirestore = (_collection) => {
+export const useFireStore = (_collection) => {
   const [response, dispatch] = useReducer(firestoreReducer, initialState);
   const [isCancelled, setIsCancelled] = useState(false);
   // collection ref
@@ -62,7 +62,9 @@ export const useFirestore = (_collection) => {
   const addDocument = async (doc) => {
     dispatch({ type: "IS_PENDING" });
     try {
-      const addedDocument = await ref.add({ ...doc });
+      const createdAt = timestamp.fromDate(new Date());
+
+      const addedDocument = await ref.add({ ...doc, createdAt });
 
       dispatchIfNotCancelled({
         type: "ADDED_DOCUMENT",
@@ -72,10 +74,44 @@ export const useFirestore = (_collection) => {
       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
     }
   };
+  // delete a document
+  /** delete a document async request*/
+  const deleteDocument = async (id) => {
+    dispatch({ type: "IS_PENDING" });
+    dispatchIfNotCancelled({
+      type: "DELETED_DOCUMENT",
+    });
+    try {
+      await ref.doc(id).delete();
+    } catch (error) {
+      dispatchIfNotCancelled({
+        type: "ERROR",
+        payload: "could not delete",
+      });
+    }
+  };
+
+  // update a document
+  /** update a document async request*/
+  const updateDocument = async (id, updates) => {
+    dispatch({ type: "IS_PENDING" });
+
+    try {
+      const updatedDocument = await ref.doc(id).update(updates);
+      dispatchIfNotCancelled({
+        type: "UPDATED_DOCUMENT",
+        payload: updatedDocument,
+      });
+      return updatedDocument;
+    } catch (err) {
+      dispatchIfNotCancelled({ type: "ERROR", payload: err.message });
+      return null;
+    }
+  };
 
   useEffect(() => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addDocument, response };
+  return { addDocument, deleteDocument, updateDocument, response };
 };

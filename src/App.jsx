@@ -1,34 +1,39 @@
-import { useSelector } from "react-redux";
-import { selectUser } from "./redux/reducers/userSlice";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar } from "./components/index";
-import Home from "./pages/Home/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login/Login";
-import CreateServer from "./pages/CreateServer/CreateServer";
-
-import SignUp from "./pages/SignUp/SignUp";
+import { Home, Server, Login, SignUp, CreateServer } from "./pages/index";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 import "./App.css";
-import Server from "./pages/Server/Server";
 
 function App() {
-  const user = useSelector(selectUser);
-
+  const { user, AuthIsReady } = useAuthContext();
   return (
     <div className="App">
-      {user && (
-        <div className="wrapper">
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/server" element={<Server />} />
-              <Route path="/create" element={<CreateServer />} />
-              <Route path="/signup" element={<SignUp />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-      )}
-      {!user && <Login />}
+      <BrowserRouter>
+        {user && <Navbar />}
+        <Routes>
+          <Route
+            path="/"
+            element={user ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/servers/:id"
+            element={user ? <Server /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="create"
+            element={user ? <CreateServer /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={!user ? <Login /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/signup"
+            element={!user ? <SignUp /> : <Navigate to="/" />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

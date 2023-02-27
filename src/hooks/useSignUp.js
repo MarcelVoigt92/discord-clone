@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { auth, storage } from "../firebase/config";
+import { auth, storage, db } from "../firebase/config";
+import { useAuthContext } from "./useAuthContext";
 
-import db from "../firebase/config";
-
-export const useSignUp = () => {
+export const useSignup = () => {
   //An art from clean up if the user changed form sign up to sign in without sending the data
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const { dispatch } = useAuthContext();
 
   /** A Function to send the user data to the db */
   const signup = async (email, password, displayName, thumbnail) => {
@@ -38,6 +38,7 @@ export const useSignUp = () => {
       });
 
       //Dispatch type and payload for the useAuthContext
+      dispatch({ type: "LOGIN", payload: res.user });
 
       //If the user cancelled the signup by going to other pages the process will be cancelled
       if (!isCancelled) {

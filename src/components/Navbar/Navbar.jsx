@@ -1,46 +1,17 @@
 //Navigation Bar for navigating between servers and private messages.
-import React, { useEffect, useState } from "react";
-
 import { FaDiscord, FaCompass } from "react-icons/fa";
 import { AiOutlinePlus, AiOutlineLogout } from "react-icons/ai";
-
-import { useCallback } from "react";
-import { auth } from "../../firebase/config";
-import db from "../../firebase/config";
-
+import { useCollection } from "../../hooks/useCollection";
+import { useLogout } from "../../hooks/useLogout";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
-  const [document, setDocument] = useState(null);
+  const { documents, error } = useCollection("servers");
 
-  const getServer = useCallback(() => {
-    let result = [];
-    db.collection("servers").onSnapshot(
-      (snapshot) => {
-        let results = [];
-        //Doc is the user Object in the db
-        snapshot.docs.forEach((doc) => {
-          results.push({ ...doc.data(), id: doc.id });
-        });
-        setDocument(results);
-      },
-      (err) => {
-        console.log("something went wrong");
-      }
-    );
-    setDocument(result);
-  }, []);
-  console.log("document", document);
+  const { logout } = useLogout();
 
-  useEffect(() => {
-    getServer();
-  }, [getServer]);
-
-  const serverId = (id) => {
-    localStorage.setItem("item", id);
-  };
   return (
     <div className="nav">
       {/* Create/Join new Server button */}
@@ -52,13 +23,10 @@ function Navbar() {
       </div>
       <div className="controlIcons">
         <div className="serverWrapper">
-          {document?.map((server) => (
+          {documents?.map((server) => (
             <div className="server-icons" key={server.id}>
-              <Link to="/server">
-                <button
-                  className="serverName "
-                  onClick={() => serverId(server.id)}
-                >
+              <Link to={`servers/${server.id}`}>
+                <button className="serverName ">
                   {server.name.charAt(0).toUpperCase()}
                 </button>
               </Link>
@@ -77,7 +45,7 @@ function Navbar() {
           <FaCompass />
         </div>
         <div className="icons">
-          <button className="logoutBtn" onClick={() => auth.signOut()}>
+          <button className="logoutBtn" onClick={logout}>
             <AiOutlineLogout />
           </button>
         </div>

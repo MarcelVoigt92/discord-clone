@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import db from "../firebase/config";
+import { db } from "../firebase/config";
 
 export const useDocument = (_collection, id) => {
   const [document, setDocument] = useState(null);
