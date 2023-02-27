@@ -1,19 +1,23 @@
-import useMessages from "../../hooks/useMessages";
+import { useDocument } from "../../hooks/useDocument";
+import { useParams } from "react-router-dom";
+
 import "./Chat.css";
 
 const Messages = ({ roomId }) => {
-  const messages = useMessages(roomId);
+  const { id } = useParams();
+  const { document } = useDocument("servers", id);
 
   return (
     <div className="messages-wrapper">
       <div className="messages">
-        {messages.map((message) => (
-          <div key={message.id}>
-            <p className="message-text">{message.text}</p>
-            <p className="message-username">{message.username}</p>
-            <p className="message-timestamp">
-              {message.timestamp.toDate().toLocaleString()}
+        {document?.messsages?.map((message) => (
+          <div className="messsageBody">
+            <p className="message-username">
+              <img src={message.image} alt="" />
+              <strong>{message.user}</strong> {message.time}
             </p>
+
+            <p className="message-text">{message.messageBody}</p>
           </div>
         ))}
       </div>

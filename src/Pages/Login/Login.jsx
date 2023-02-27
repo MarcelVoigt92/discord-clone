@@ -38,6 +38,9 @@ const Login = () => {
         </label>
         <button className="signInBtn">Log In...</button>
       </form>
+      <Link to="/signup" className="signInBtn">
+        <button>Create an Account</button>
+      </Link>
       {/* <Link to="/signup">You do not have an account create on with us</Link> */}
     </div>
   );

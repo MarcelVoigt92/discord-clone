@@ -26,10 +26,10 @@ const CreateServer = () => {
     }
     const server = {
       name: name,
+      messsages: [],
       room: [
         {
           name: category.value,
-          messages: [],
         },
       ],
     };
@@ -64,7 +64,6 @@ const CreateServer = () => {
             <Select
               options={roomCategories}
               onChange={(option) => {
-                console.log(option);
                 setCategory(option);
               }}
             />

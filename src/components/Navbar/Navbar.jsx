@@ -4,7 +4,7 @@ import { AiOutlinePlus, AiOutlineLogout } from "react-icons/ai";
 import { useCollection } from "../../hooks/useCollection";
 import { useLogout } from "../../hooks/useLogout";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import "./Navbar.css";
 
 function Navbar() {
