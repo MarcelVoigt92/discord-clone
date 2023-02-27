@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useFirestore } from "../../hooks/useFirebase";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import discord from "../../assets/discord.png";
+import "./CreateServer.css";
 
 const CreateServer = () => {
   const navigate = useNavigate();
@@ -35,14 +37,17 @@ const CreateServer = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <h2>Create Your Owm Server</h2>
+    <div className="container">
+      <img src={discord} alt="" />
+      <form className="create-form" onSubmit={(e) => handleSubmit(e)}>
+        <h2 id="create-h2">Create Your Own Server</h2>
         <div>
-          <label>
-            <span>Server Name:</span>
+          <label id="create-label">
+            <span className="create-span">Server Name:</span>
             <input
+              className="create-input"
               type="text"
+              placeholder="Server Name"
               required
               onChange={(e) => setName(e.target.value)}
               value={name}
@@ -52,7 +57,7 @@ const CreateServer = () => {
 
         <div>
           <label>
-            <span>Choose Your First Chanal:</span>
+            <span className="create-span">Choose Your First Channel:</span>
             <Select
               options={roomCategories}
               onChange={(option) => {
@@ -62,7 +67,9 @@ const CreateServer = () => {
             />
           </label>
         </div>
-        <button type="submit">Create Server</button>
+        <button className="create-btn" type="submit">
+          Create Server
+        </button>
       </form>
     </div>
   );

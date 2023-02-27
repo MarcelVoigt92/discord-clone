@@ -19,7 +19,6 @@ function App() {
       {user && (
         <div className="wrapper">
           <BrowserRouter>
-            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/server" element={<Server />} />

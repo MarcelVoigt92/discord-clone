@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSignUp } from "../../hooks/useSignUp";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/reducers/userSlice";
+import discord from "../../assets/discord.png";
 import "./SignUp.css";
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -38,11 +39,13 @@ const SignUp = () => {
   };
   return (
     <div className="signUp">
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <img className="discord-img" src={discord} alt="" />
+      <form className="sign-up-form" onSubmit={(e) => handleSubmit(e)}>
         <h2>Sign up to be with us</h2>
         <label>
           <span>Email:</span>
           <input
+            className="sign-up-input"
             type="email"
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -50,8 +53,9 @@ const SignUp = () => {
           />
         </label>
         <label>
-          <span>Password:</span>
+          <span className="sign-up-span">Password:</span>
           <input
+            className="sign-up-input"
             type="password"
             required
             onChange={(e) => setPassWord(e.target.value)}
@@ -59,8 +63,9 @@ const SignUp = () => {
           />
         </label>
         <label>
-          <span>Username:</span>
+          <span className="sign-up-span">Username:</span>
           <input
+            className="sign-up-input"
             type="text"
             required
             onChange={(e) => setDisplayName(e.target.value)}
@@ -71,7 +76,7 @@ const SignUp = () => {
           <span>Profile Picture:</span>
           <input type="file" required onChange={handlePhoto} />
         </label>
-        <button>Submit</button>
+        <button className="sign-up-btn">Sign Up!</button>
       </form>
     </div>
   );

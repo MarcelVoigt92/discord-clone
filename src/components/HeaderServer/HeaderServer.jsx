@@ -15,7 +15,7 @@ function HeaderServer({ serverName }) {
   return (
     <>
       <div className="sidebar__top">
-        <span>{serverName}</span>
+        <h2>{serverName}</h2>
         <span onClick={handleMenuOpener}>{menuIcon}</span>
         {/*or <IoIosArrowUp /> - Arrow Up/Down for server options */}
       </div>
