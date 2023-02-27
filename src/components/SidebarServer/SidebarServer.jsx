@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import { HeaderServer } from "../index.js";
+import { GrChannel } from "react-icons/gr";
 import "./SidebarServer.css";
 import { Footer } from "../index.js";
 /* , IoIosArrowForward */
@@ -35,7 +36,9 @@ function SidebarServer({ serverName, rooms = [] }) {
           <div>
             <ul>
               {rooms.map((room) => (
-                <li key={room.name}>{room.name}</li>
+                <li key={room.name}>
+                  <GrChannel /> {room.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -55,7 +58,7 @@ function SidebarServer({ serverName, rooms = [] }) {
             <AiOutlinePlus className="sidebar__addChannel" />
           </div>
           <ul>
-            <li>no .map we just pretend they exist *wheeze*</li>
+            <li>to be added </li>
           </ul>
         </div>
         <Footer />
