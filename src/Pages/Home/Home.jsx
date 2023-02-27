@@ -4,6 +4,7 @@ import {
   HeaderChat,
   Chat,
   Input,
+  Navbar,
 } from "../../components/index";
 
 import "./Home.css";
@@ -11,6 +12,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="home">
+      <Navbar />
       <HeaderChat />
       <SidebarUsers />
       <SidebarServer />

@@ -4,6 +4,7 @@ import {
   SidebarServer,
   SidebarUsers,
   Chat,
+  Navbar,
 } from "../../components/index";
 import { useCallback } from "react";
 import { useEffect, useState } from "react";
@@ -30,6 +31,7 @@ const Server = () => {
   // console.log(id);
   return (
     <div className="server">
+      <Navbar />
       <HeaderChat />
       <SidebarUsers />
       <SidebarServer serverName={server?.name} />
