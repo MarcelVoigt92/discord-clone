@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <HeaderChat />
+      <HeaderChat name={""} />
       <SidebarUsers />
       <Friends />
       <WelcomPage />

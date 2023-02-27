@@ -1,11 +1,19 @@
 .welcome {
   background-color: #36393f;
-  display: flex;
 
   padding: 20px;
 }
+.logo {
+  width: 100%;
+  text-align: center;
+}
 .welcome img {
   border-radius: 7px;
-  width: 250px;
-  aspect-ratio: 1;
+  width: 500px;
+  height: 250px;
+}
+.tow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
 }

@@ -22,7 +22,7 @@ const Server = () => {
   // console.log(id);
   return (
     <div className="server">
-      <HeaderChat />
+      <HeaderChat name={server?.room?.[0].name} />
       <SidebarUsers />
       <SidebarServer serverName={server?.name} rooms={server?.room} />
       <Chat />
