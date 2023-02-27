@@ -5,20 +5,34 @@ import {
   SidebarUsers,
   Chat,
 } from "../../components/index";
-import { useDocument } from "../../hooks/useDocument";
+import { useCallback } from "react";
 import { useEffect, useState } from "react";
+import db from "../../firebase/config";
 
 const Server = () => {
-  const [id, setId] = useState("FNBxYAY4F5xx5KFH3fbO");
-  const { document } = useDocument("servers", id);
+  const [server, setServer] = useState(null);
 
+  const getServer = (_collection, _id) => {
+    const response = db.collection(_collection).doc(_id);
+    const unsub = response.onSnapshot((snapshot) => {
+      if (snapshot.data()) {
+        // firebase method to get data and get the id
+        setServer({ ...snapshot.data(), id: snapshot.id });
+      } else {
+        console.log("Project doesn't exist");
+      }
+    });
+  };
+  useEffect(() => {
+    getServer("servers", localStorage.getItem("item"));
+  }, [server]);
   // const { id } = useParams();
   // console.log(id);
   return (
     <div className="server">
       <HeaderChat />
       <SidebarUsers />
-      <SidebarServer serverName={document?.name} />
+      <SidebarServer serverName={server?.name} />
       <Chat />
     </div>
   );
