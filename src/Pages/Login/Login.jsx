@@ -41,6 +41,7 @@ const Login = () => {
           <button className="signInBtn">Create an Account</button>
         </Link>
       </form>
+      {error && <div className="error">{error}</div>}
       {/* <Link to="/signup">You do not have an account create on with us</Link> */}
     </div>
   );

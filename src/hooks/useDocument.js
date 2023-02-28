@@ -18,7 +18,7 @@ export const useDocument = (_collection, id) => {
             setDocument({ ...snapshot.data(), id: snapshot.id });
             setError(null);
           } else {
-            setError("Project doesn't exist");
+            setError("server doesn't exist");
           }
           // getting the error
         },
