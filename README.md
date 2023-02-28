@@ -22,8 +22,8 @@ Upload a profile picture to your user account by clicking on your username in th
 
 ## Collaborators
 
-- Kathrine (dkathrine)
-- Hosam (Hosam89)
+- [Kathrine](https://github.com/dkathrine)
+- [Hosam](https://github.com/Hosam89)
 
 ## Contributing
 
