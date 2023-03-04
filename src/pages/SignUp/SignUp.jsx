@@ -57,7 +57,7 @@ export default function SignUp() {
       <img src={discord} alt="" className="discord-img" />
       <form className="sign-up-form " onSubmit={handleSubmit}>
         <h2>Sign Up/ Register</h2>
-        <label>
+        <label className="sign-up-label">
           <span className="sign-up-span ">Email:</span>
           <input
             className="sign-up-input"
@@ -67,7 +67,7 @@ export default function SignUp() {
             value={email}
           />
         </label>
-        <label>
+        <label className="sign-up-label">
           <span className="sign-up-span ">Password:</span>
           <input
             className="sign-up-input"
@@ -77,7 +77,7 @@ export default function SignUp() {
             value={password}
           />
         </label>
-        <label>
+        <label className="sign-up-label">
           <span className="sign-up-span ">Username:</span>
           <input
             className="sign-up-input"
@@ -87,7 +87,7 @@ export default function SignUp() {
             value={displayName}
           />
         </label>
-        <label>
+        <label className="sign-up-label">
           <span className="sign-up-span ">Profile Picture:</span>
           <input type="file" required onChange={handleFileChange} />
           {/** A box will disply the Thumbnail error */}

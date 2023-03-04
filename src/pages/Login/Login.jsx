@@ -18,7 +18,7 @@ const Login = () => {
     <div className="login">
       <img src={Discord} alt="" />
       <form className="login-form" onSubmit={(e) => handleLogin(e)}>
-        <label>
+        <label className="login-label">
           <span>Email:</span>
           <input
             type="email"
@@ -27,7 +27,7 @@ const Login = () => {
             value={email}
           />
         </label>
-        <label>
+        <label className="login-label">
           <span>Password : </span>
           <input
             type="password"
