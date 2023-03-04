@@ -4,6 +4,7 @@ import { Home, Server, Login, SignUp, CreateServer } from "./pages/index";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 import "./App.css";
+import Room from "./pages/Room/Room";
 
 function App() {
   const { user, AuthIsReady } = useAuthContext();
@@ -31,6 +32,10 @@ function App() {
           <Route
             path="/signup"
             element={!user ? <SignUp /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/servers/:id/rooms/:id"
+            element={user ? <Room /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>
