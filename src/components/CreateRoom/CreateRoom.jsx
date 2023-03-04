@@ -21,69 +21,71 @@ const CreateRoom = ({ showRoom, show1 }) => {
     showRoom(!show1);
   };
   return (
-    <div
-      className={`modalContainer animate__animated animate__backInDown animate__faster ${
-        show1 ? "" : "hide"
-      }`}
-    >
-      <div className="modal ">
-        <div>
-          <AiOutlineClose onClick={() => showRoom(!show1)} />
-        </div>
-        <div className="channelType">
-          <label className="roomNames">
-            <span>
+    <div className={` ${show1 ? "overlay" : ""}`}>
+      <div
+        className={`modalContainer animate__animated animate__backInDown animate__faster ${
+          show1 ? "" : "hide"
+        }`}
+      >
+        <div className="modal ">
+          <div>
+            <AiOutlineClose onClick={() => showRoom(!show1)} />
+          </div>
+          <div className="channelType">
+            <label className="roomNames">
               <BiHash />
-              Text
-            </span>
-            <input
-              type="radio"
-              name="text"
-              id="text"
-              placeholder="New Channel"
-              value="text"
-              onChange={(e) => setRoomType(e.target.value)}
-            />
-          </label>
-          <label className="roomNames">
-            <span>
+              <span>Text-Channel</span>
+              <input
+                type="radio"
+                name="text"
+                id="text"
+                placeholder="New Channel"
+                value="text"
+                onChange={(e) => setRoomType(e.target.value)}
+                style={{ transform: "scale(1.5)", marginRight: "10px" }}
+              />
+            </label>
+            <label className="roomNames">
               <HiSpeakerWave />
-              voice
-            </span>
-            <input
-              type="radio"
-              name="text"
-              id="voice"
-              value="voice"
-              placeholder="New Channel"
-              onChange={(e) => setRoomType(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            <span>Enter the Room name</span>
-            <input
-              type="text"
-              placeholder="channleName"
-              required
-              onChange={(e) => setRoomName(e.target.value)}
-            />
-          </label>
-        </div>
-        <div className="private roomNames ">
-          <span>
+              <span>Voice-Channel</span>
+              <input
+                type="radio"
+                name="text"
+                id="voice"
+                value="voice"
+                placeholder="New Channel"
+                onChange={(e) => setRoomType(e.target.value)}
+                style={{ transform: "scale(1.5)", marginRight: "10px" }}
+              />
+            </label>
+          </div>
+          <div>
+            <label className="roomNames">
+              <span>Enter Room name</span>
+              <input
+                className="creation-input"
+                type="text"
+                placeholder="Channel Name"
+                required
+                onChange={(e) => setRoomName(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="private roomNames ">
             <AiFillLock />
-            Private{" "}
-          </span>
-          <label className="switch  ">
-            <input type="checkbox" />
-            <span className="slider round"></span>
-          </label>
+            <span>Private </span>
+            <label className="switch  ">
+              <input type="checkbox" />
+              <span className="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div className="button-div">
+          {" "}
+          <button onClick={createNewRoom}>Create</button>
+          <button onClick={() => showRoom(!show1)}> Cancel</button>
         </div>
       </div>
-      <button onClick={createNewRoom}>Create</button>
-      <button onClick={() => showRoom(!show1)}> Cancel</button>
     </div>
   );
 };

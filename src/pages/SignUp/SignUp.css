@@ -29,7 +29,7 @@ h2 {
   text-align: center;
 }
 
-label {
+.sign-up-label {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;

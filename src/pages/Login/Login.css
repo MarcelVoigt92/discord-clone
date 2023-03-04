@@ -23,14 +23,14 @@
   border-radius: 8px;
 }
 
-label {
+.login-label {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
   width: 100%;
 }
 
-label span {
+.login-label span {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 5px;
