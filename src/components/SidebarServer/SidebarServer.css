@@ -58,3 +58,17 @@
 ul {
   list-style-type: none;
 }
+
+ul li {
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  padding: 20px;
+
+  margin: 0;
+}

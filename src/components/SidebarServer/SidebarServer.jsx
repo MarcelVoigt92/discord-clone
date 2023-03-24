@@ -13,7 +13,7 @@ import { Link, useParams } from "react-router-dom";
 
 /* , IoIosArrowForward */
 
-function SidebarServer({ serverName }) {
+function SidebarServer({ serverName, state, setState }) {
   const { id } = useParams();
   const [rotateTextArrow, setRotateTextArrow] = useState(false);
   const handleTextRotate = () => setRotateTextArrow(!rotateTextArrow);
@@ -68,12 +68,9 @@ function SidebarServer({ serverName }) {
           <div>
             <ul>
               {rooms.map((room) => (
-                <Link to={`rooms/${room.id}`}>
-                  {" "}
-                  <li key={room.id}>
-                    <GrChannel /> {room.roomName}
-                  </li>
-                </Link>
+                <li key={room.id} onClick={() => setState(!state)}>
+                  <GrChannel /> {room.roomName}
+                </li>
               ))}
             </ul>
           </div>

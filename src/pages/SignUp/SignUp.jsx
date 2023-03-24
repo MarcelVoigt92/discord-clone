@@ -32,7 +32,6 @@ export default function SignUp() {
 
     let selected = e.target.files[0];
 
-    console.log(selected);
     if (!selected) {
       setThumbnailError("Please select an image file");
       return;
@@ -49,7 +48,6 @@ export default function SignUp() {
     }
     setThumbnailError(null);
     setThumbnail(selected);
-    console.log("thumbnail updated");
   };
 
   return (

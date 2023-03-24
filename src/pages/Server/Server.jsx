@@ -15,20 +15,25 @@ import Room from "../Room/Room";
 const Server = () => {
   const { id } = useParams();
   const { document, error } = useDocument("servers", id);
-
+  const [room, setRoom] = useState(false);
   const [server, setServer] = useState(null);
 
   setTimeout(() => {
     setServer(document);
   }, 100);
-  // const { id } = useParams();
-  // console.log(id);
+
   return (
     <div className="server">
-      <HeaderChat name={server?.room?.[0].name} />
+      <HeaderChat />
+
       <SidebarUsers />
-      <SidebarServer serverName={server?.name} rooms={server?.room} />
-      <Room />
+      <SidebarServer
+        serverName={server?.name}
+        rooms={server?.room}
+        state={room}
+        setState={setRoom}
+      />
+      {room && <Room />}
     </div>
   );
 };

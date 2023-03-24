@@ -17,7 +17,7 @@ const CreateRoom = ({ showRoom, show1 }) => {
       roomType,
     };
     await db.collection("servers").doc(id).collection("rooms").add(room);
-    console.log(db.collection("servers").doc(id).collection("rooms"));
+
     showRoom(!show1);
   };
   return (
